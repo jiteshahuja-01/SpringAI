@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: true,\n  uploadUrl: 'http://localhost:8080/document/upload',\n  chatUrl: 'http://localhost:8080/query/ask'\n};","map":null,"metadata":{},"sourceType":"module"}

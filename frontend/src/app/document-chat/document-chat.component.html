@@ -1,0 +1,42 @@
+<div class="max-w-xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
+  <!-- Upload Section -->
+  <div class="mb-6">
+    <label class="block text-sm font-medium text-gray-700 mb-2">Select Document</label>
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+    />
+    <button
+      (click)="uploadFile()"
+      [disabled]="!selectedFile || uploading"
+      class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+    >
+      {{ uploading ? 'Uploading...' : 'Upload Document' }}
+    </button>
+  </div>
+
+  <!-- Chat Section -->
+  <div *ngIf="selectedFile">
+    <label class="block text-sm font-medium text-gray-700 mb-2">Ask a Question</label>
+    <textarea
+      [(ngModel)]="question"
+      rows="3"
+      placeholder="Ask something about the document..."
+      class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+    ></textarea>
+
+    <button
+      (click)="askQuestion()"
+      [disabled]="chatting"
+      class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
+    >
+      {{ chatting ? 'Asking...' : 'Ask' }}
+    </button>
+
+    <div *ngIf="answer" class="mt-6 p-4 bg-gray-100 rounded border border-gray-200">
+      <strong class="block text-gray-700 mb-2">Answer:</strong>
+      <p class="text-gray-800">{{ answer }}</p>
+    </div>
+  </div>
+</div>
